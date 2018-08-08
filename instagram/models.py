@@ -14,6 +14,7 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
    instance.profile.save()
+
 # class tags(models.Model):
 #     name = models.CharField(max_length =30)
 #
@@ -26,6 +27,8 @@ class Article(models.Model):
     # tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
     article_image = models.ImageField(upload_to = 'articles/', blank=True)
+
+
     @classmethod
     def todays_news(cls):
         today = dt.date.today()
@@ -41,10 +44,12 @@ class Article(models.Model):
     def search_by_titles(cls,search_term):
         news = cls.objects.filter(title__icontains=search_term)
         return news
+
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to='images/')
     bio = models.CharField(max_length=300)
     user = models.OneToOneField(User)
+
 class NewsLetterRecipients(models.Model):
     name = models.CharField(max_length = 30, null = True)
     email = models.EmailField(null = True)

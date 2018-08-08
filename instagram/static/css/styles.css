@@ -1,0 +1,28 @@
+.logo {
+  width : 200px;
+  height: 50px;
+}
+
+.logo1 {
+  width : 35px;
+  height: 35px;
+}
+#regform {
+  margin-top: 100px;
+}
+
+.form-text{
+  display: none;
+}
+
+#loginform {
+  margin-top: 100px;
+}
+
+.lol {
+  max-width: 70%;
+}
+
+#profpage {
+  margin-top: 100px;
+}

@@ -1,0 +1,58 @@
+{% extends 'all-news/base.html' %} {% load bootstrap4 %} {% load static %} {% block content %} {{block.super}}
+<div class="container">
+
+  <!-- Looping through news -->
+  {% for news_item in news %}
+  <div class="card lol">
+    <br>
+    <span><p><strong>&nbsp;&nbsp;&nbsp;<a href="{% url 'profile' user_id=image.owner.id %}" class="link">{{ image.owner }}</a></strong></p></span>
+    <img class="img-fluid element" src="{{ news_item.article_image.url }}" alt="{{ image.owner }}">
+    <span class="like-icon"><img class="noti-icon" src="{% static 'images/notification.png' %}"></span>
+    <p><strong>&nbsp;<a href="{% url 'profile' user_id=article.editor.id %}" class="link">{{ article.editor }}</a></strong>&nbsp;{{ news_item.title }}</p>
+    {% for comment in comments %} {% if comment.image_id_id == image.id %}
+    <p><strong>&nbsp;<a href="{% url 'profile' user_id=comment.commenter.id %}" class="link">{{ comment.commenter }}</a></strong> &nbsp; {{ comment.comment }}</p>
+    {% endif %} {% endfor %}
+  </div>
+
+
+  {% empty %}
+  <div class="row">
+    <h2 class="text-center">There No News Items</h2>
+  </div>
+  {% endfor %}
+
+  <!-- <form action="{% url 'newsToday' %}" method="post">
+    {% csrf_token %}
+
+
+    <input type="submit" value="Subscribe">
+  </form> -->
+</div>
+{% endblock %} {% block scripts %}
+<script type="text/javascript" src="{%static 'js/newsletter.js'%}"></script>
+{% endblock scripts %}
+
+<div class="card ">
+  <br>
+  <span><p><strong>&nbsp;&nbsp;&nbsp;<a href="{% url 'profile' user_id=image.owner.id %}" class="link">{{ image.owner }}</a></strong></p></span>
+  <img class="img-fluid element" src="{{ news_item.article_image.url }}" alt="{{ image.owner }}">
+  <span class="like-icon"><img class="noti-icon" src="{% static 'images/notification.png' %}"></span>
+  <p><strong>&nbsp;<a href="{% url 'profile' user_id=image.owner.id %}" class="link">{{ image.owner }}</a></strong>&nbsp;{{ news_item.title }}</p>
+  <form action="{%url 'comment' image_id=image.id %}" method="post" enctype="multipart/form-data">
+    {%csrf_token%} {% bootstrap_form comment%}
+  </form>
+  {% for comment in comments %} {% if comment.image_id_id == image.id %}
+  <p><strong>&nbsp;<a href="{% url 'profile' user_id=comment.commenter.id %}" class="link">{{ comment.commenter }}</a></strong> &nbsp; {{ comment.comment }}</p>
+  {% endif %} {% endfor %}
+</div>
+
+<!-- <div class="row">
+
+                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <h2 class="text-center"></h2>
+                          </div>
+                          Display news Article images
+                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <img src="{class="img-responsive" alt="Image">
+                          </div>
+                        </div> -->
