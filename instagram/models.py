@@ -14,3 +14,15 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
    instance.profile.save()
+# class tags(models.Model):
+#     name = models.CharField(max_length =30)
+#
+#     def __str__(self):
+#         return self.name
+
+class Article(models.Model):
+    title = models.CharField(max_length =60)
+    editor = models.ForeignKey(User)
+    # tags = models.ManyToManyField(tags)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    article_image = models.ImageField(upload_to = 'articles/', blank=True)
