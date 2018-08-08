@@ -83,7 +83,7 @@ python3.6 manage.py runserver
 Open [localhost:8000](http://127.0.0.1:8000/)
 
 ## Deployment
-To deploy the application, please follow the instructions in [this gist] by my technical mentor Newton Karanu(https://gist.github.com/newtonkiragu/42f2500e56d9c2375a087233587eddd0)
+To deploy the application, please follow the instructions in [this gist](https://gist.github.com/newtonkiragu/42f2500e56d9c2375a087233587eddd0) by my technical mentor Newton Karanu
 
 ## Contributing
 Please read this [comprehensive guide](https://opensource.guide/how-to-contribute/) on how to contribute. Pull requests are welcome :-)
