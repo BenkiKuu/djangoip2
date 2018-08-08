@@ -45,3 +45,11 @@ class Profile(models.Model):
     profile_photo = models.ImageField(upload_to='images/')
     bio = models.CharField(max_length=300)
     user = models.OneToOneField(User)
+class NewsLetterRecipients(models.Model):
+    name = models.CharField(max_length = 30, null = True)
+    email = models.EmailField(null = True)
+
+class MoringaMerch(models.Model):
+    name = models.CharField(max_length=40)
+    description = models.TextField()
+    price = models.DecimalField(decimal_places=2, max_digits=20)
